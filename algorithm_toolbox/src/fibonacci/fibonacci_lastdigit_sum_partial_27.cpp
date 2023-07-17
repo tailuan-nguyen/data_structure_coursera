@@ -1,6 +1,6 @@
 #include<iostream>
 
-int lastdigit_partialsum_fibonacci(unsigned long long start, unsigned long long end) {
+int fibonacci_lastdigit_partialsum(unsigned long long start, unsigned long long end) {
     int result = 0;
     int prev = 0, curr = 1;
     int index = 2;
@@ -13,18 +13,16 @@ int lastdigit_partialsum_fibonacci(unsigned long long start, unsigned long long 
     while(index < end + 1) { 
         int temp = curr;
         curr = (curr + prev) % 10;
-        prev += temp;
-        result = (result + curr) % 10;
+        prev = temp;
+        result = result + curr;
         index++;
     }
-    return result;
+    return result % 10;
 }
 
 int main() {
-    while (true) {
-        unsigned long long start, end;
-        std::cin >> start >> end;
-        std::cout << lastdigit_partialsum_fibonacci(start, end) << std::endl << std::endl;
-    }
+    unsigned long long start, end;
+    std::cin >> start >> end;
+    std::cout << fibonacci_lastdigit_partialsum(start, end) << std::endl;
     return 0;
 }
