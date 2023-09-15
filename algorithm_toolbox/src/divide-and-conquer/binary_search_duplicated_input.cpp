@@ -4,14 +4,21 @@
 
 using std::vector;
 
-int binary_search(const vector<int> &a, const int x) {
-  int leftIndex = 0, rightIndex = (int)a.size() - 1;
+int binary_search_duplicated_input(const vector<int> &a, int x) {
+  int leftIndex = 0, rightIndex = (int)a.size() - 1; 
   if (a.at(leftIndex) > x || a.at(rightIndex) < x){
     return -1;
   }
   while (leftIndex <= rightIndex) {
     int midIndex = (leftIndex + rightIndex) / 2;
     if (a.at(midIndex) == x) {
+      while (midIndex > 0) {
+        if (a.at(midIndex - 1) == x) {
+          midIndex--;
+        } else {
+          return midIndex;
+        }
+      }
       return midIndex;
     } else if (x > a.at(midIndex)) {
       leftIndex = midIndex + 1;   // add 1 to avoid infinite repeated loop.
@@ -43,6 +50,6 @@ int main() {
     std::cin >> b[i];
   }
   for (int i = 0; i < m; ++i) {
-    std::cout << binary_search(a, b[i]) << ' ';
+    std::cout << binary_search_duplicated_input(a, b[i]) << ' ';
   }
 }
