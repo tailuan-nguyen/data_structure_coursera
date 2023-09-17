@@ -9,18 +9,15 @@ int binary_search_duplicated_input(const vector<int> &a, int x) {
   if (a.at(leftIndex) > x || a.at(rightIndex) < x){
     return -1;
   }
+
   while (leftIndex <= rightIndex) {
     int midIndex = (leftIndex + rightIndex) / 2;
     if (a.at(midIndex) == x) {
-      while (midIndex > 0) {
-        if (a.at(midIndex - 1) == x) {
-          midIndex--;
-        } else {
-          return midIndex;
-        }
-      }
-      return midIndex;
-    } else if (x > a.at(midIndex)) {
+      if (midIndex == 0 || a.at(midIndex - 1) != x) {
+        return midIndex;
+      } 
+    }
+    if (a.at(midIndex) < x) {
       leftIndex = midIndex + 1;   // add 1 to avoid infinite repeated loop.
     } else {
       rightIndex = midIndex - 1;  // subtract 1 to avoid infinite repeated loop. 
