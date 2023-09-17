@@ -31,7 +31,7 @@ int linear_search(const vector<int> &a, int x) {
     if (a[i] == x) return i;
   }
   return -1;
-}
+
 
 int main() {
   int n;
