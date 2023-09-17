@@ -6,13 +6,13 @@
 using std::vector;
 using std::swap;
 
-void print_vector(const vector<int> &a) {
-  int size = a.size(); 
-  for (int i = 0; i < a.size(); i++) {
-    std::cout << a.at(i) << " ";
-  }
-  std::cout << std::endl;
-}
+// void print_vector(const vector<int> &a) {
+//   int size = a.size(); 
+//   for (int i = 0; i < a.size(); i++) {
+//     std::cout << a.at(i) << " ";
+//   }
+//   std::cout << std::endl;
+// }
 
 /**
  * @brief partition using first element as 
@@ -50,11 +50,11 @@ void randomized_quick_sort(vector<int> &a, int left, int right) {
   std::srand(1);
   int random_index = left + rand() % (right - left + 1);
   std::swap(a[left], a[random_index]);
-  std::cout << "swap random: ";
-  print_vector(a);
+  // std::cout << "swap random: ";
+  // print_vector(a);
   int pivot = partition_index0(a, left, right);
-  std::cout << "index: " << pivot << " value: " << a[pivot] << std::endl;
-  print_vector(a);
+  // std::cout << "index: " << pivot << " value: " << a[pivot] << std::endl;
+  // print_vector(a);
   randomized_quick_sort(a, left, pivot - 1);
   randomized_quick_sort(a, pivot + 1, right);
 }
